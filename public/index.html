@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><body>
+<h2>KifaruPay Bulk STK Push</h2>
+<textarea id="numbers" rows="10" cols="40" placeholder="2547... one per line"></textarea><br>
+<input id="amount" placeholder="Amount"><br>
+<input id="reference" placeholder="Reference"><br>
+<button onclick="send()">Send STK</button>
+<pre id="log"></pre>
+<script>
+async function send(){
+ const numbers=document.getElementById('numbers').value.split('\n').map(x=>x.trim()).filter(Boolean);
+ const amount=Number(document.getElementById('amount').value);
+ const reference=document.getElementById('reference').value;
+ document.getElementById('log').textContent="Processing...";
+ const r=await fetch('/api/bulk-stk',{
+  method:'POST',
+  headers:{'Content-Type':'application/json'},
+  body:JSON.stringify({numbers,amount,reference})
+ });
+ const data=await r.json();
+ document.getElementById('log').textContent=JSON.stringify(data,null,2);
+}
+</script>
+</body></html>
