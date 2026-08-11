@@ -1,6 +1,14 @@
 services:
   - type: web
-    name: kifarupay-bulk-stk
+    name: bulk-stk-push
     env: node
+    plan: free
     buildCommand: npm install
     startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: KIFARU_API_KEY
+        sync: false
+      - key: KIFARU_APP_ID
+        sync: false
