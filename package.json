@@ -1,11 +1,19 @@
 {
-  "name": "kifarupay-bulk-stk",
+  "name": "bulk-stk-push",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": { "start": "node index.js" },
+  "description": "Bulk M-Pesa STK Push web application using Kifaru Pay API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
   "dependencies": {
     "axios": "^1.7.0",
-    "dotenv": "^16.4.0",
-    "express": "^4.19.2"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
